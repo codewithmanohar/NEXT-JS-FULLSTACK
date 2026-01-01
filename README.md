@@ -1,36 +1,151 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 📦 EszyStock – Inventory Management System
 
-## Getting Started
+**EszyStock** is a modern **inventory management web application** designed to help businesses efficiently manage stock, sales, and operations.
+Built using **Next.js 16**, **React 19**, **Prisma**, and **Tailwind CSS**, it delivers performance, scalability, and a clean user experience.
 
-First, run the development server:
+---
+
+## 🚀 Features
+
+* 📊 Interactive dashboard with analytics
+* 📦 Inventory & stock management
+* 📈 Sales tracking and reporting
+* 👥 User authentication & role-based access
+* ⚡ Fast UI powered by Next.js & React
+* 🗄️ Database management using Prisma ORM
+* 🎨 Modern UI with Tailwind CSS
+* 📱 Fully responsive design
+
+---
+
+## 🛠 Tech Stack
+
+### Frontend
+
+* **Next.js 16**
+* **React 19**
+* **Tailwind CSS**
+* **Lucide Icons**
+* **Recharts**
+
+### Backend & Tools
+
+* **Prisma ORM**
+* **Node.js**
+* **TypeScript**
+* **Dotenv**
+
+---
+
+## 📁 Project Structure
+
+```
+inventory-management/
+│
+├── app/                # App Router (Next.js)
+├── components/         # Reusable components
+├── lib/                # Utility functions
+├── prisma/             # Prisma schema & migrations
+├── public/             # Static assets
+├── styles/             # Global styles
+├── .env                # Environment variables
+├── package.json
+└── README.md
+```
+
+---
+
+## ⚙️ Installation & Setup
+
+### 1️⃣ Clone the repository
+
+```bash
+git clone https://github.com/codewithmanohar/eszystock.git
+cd eszystock
+```
+
+### 2️⃣ Install dependencies
+
+```bash
+npm install
+```
+
+### 3️⃣ Setup environment variables
+
+Create a `.env` file in the root directory:
+
+```env
+DATABASE_URL="your_database_url_here"
+```
+
+---
+
+### 4️⃣ Setup Prisma
+
+```bash
+npx prisma generate
+npx prisma migrate dev
+```
+
+---
+
+### 5️⃣ Start the development server
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open your browser and visit:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```
+http://localhost:3000
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+## 🧪 Available Scripts
 
-To learn more about Next.js, take a look at the following resources:
+| Command         | Description              |
+| --------------- | ------------------------ |
+| `npm run dev`   | Start development server |
+| `npm run build` | Build for production     |
+| `npm start`     | Start production server  |
+| `npm run lint`  | Run ESLint               |
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 📊 Charts & Analytics
 
-## Deploy on Vercel
+* Built using **Recharts**
+* Supports:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+  * Area charts
+  * Bar charts
+  * KPI dashboards
+* Optimized for performance and clarity
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+
+## 🔐 Authentication & Security
+
+* Secure authentication system
+* Role-based access control
+* Environment-based configuration
+
+---
+
+## 📌 Future Enhancements
+
+* Role-based dashboards (Admin / Staff)
+* Stock alerts & notifications
+* Export reports (PDF / Excel)
+* Dark mode support
+* API integrations
+
+---
+
+## 👨‍💻 Developer
+
+**Manohar Kumar**
+Full Stack Developer
+
