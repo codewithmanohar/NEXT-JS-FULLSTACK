@@ -2,20 +2,40 @@ import { getCurrentUser } from "@/lib/auth";
 import Sidebar from "../components/sidebar";
 import { prisma } from "@/lib/prisma";
 import { deleteProduct } from "@/lib/actions/product";
+import Pagination from "../components/Pagination";
 
 
 export default async function InventoryPage({
     searchParams,
-}:{
-    searchParams: Promise<{q?: string}>; 
+}: {
+    searchParams: Promise<{ q?: string, page?: string }>;
 }) {
     const user = await getCurrentUser();
     const userId = user?.id;
-    const params = await searchParams; 
-    const q = (params.q ?? "").trim(); 
-    const totalProducts = await prisma.product.findMany({ 
-        where: { userId, name: { contains: q, mode: "insensitive"} } 
-    });
+    const params = await searchParams;
+    const q = (params.q ?? "").trim();
+    const page = Math.max(1, Number(params.page ?? 1));
+    const pageSize = 10;
+
+    const where = {
+        userId,
+        ...(q ? { name: { contains: q, mode: "insensitive" as const } } : {})
+    }
+
+    const [totalCount, items] = await Promise.all([
+        prisma.product.count({ where }),
+        prisma.product.findMany({
+            where,
+            orderBy: { createdAt: "desc"}, 
+            skip: (page - 1) * pageSize, 
+            take: pageSize
+        }),
+    ])
+
+
+
+    const totalPages = Math.max(1, Math.ceil(totalCount / pageSize));
+
     return (
         <div>
             <Sidebar currentPath="/inventory" />
@@ -41,14 +61,14 @@ export default async function InventoryPage({
                     <div className="bg-white rounded-lg border border-gray-200 p-6">
                         <form className="flex gap-2" action="/inventory" method="GET">
                             <input
-                                placeholder="Search product..." 
+                                placeholder="Search product..."
                                 className="flex-1 px-4 py-2 border border-gray-300 rounded-lg  focus:border-transparent"
                                 name="q"
                                 type="text"
-                                 />
-                                <button className="px-6 bg-purple-600 text-white rounded-lg hover:bg-purple-700">
-                                    Search 
-                                </button>
+                            />
+                            <button className="px-6 bg-purple-600 text-white rounded-lg hover:bg-purple-700">
+                                Search
+                            </button>
                         </form>
 
                     </div>
@@ -67,7 +87,7 @@ export default async function InventoryPage({
                             </thead>
 
                             <tbody className="bg-white divide-y divide-gray-200">
-                                {totalProducts.map((product, key) => (
+                                {items.map((product, key) => (
                                     <tr key={key} className="hover:bg-gray-50">
                                         <td className="px-6 py-4 text-left text-sm text-gray-500 ">
                                             {product.name}
@@ -85,11 +105,11 @@ export default async function InventoryPage({
                                             {product.lowStockAt || "-"}
                                         </td>
                                         <td>
-                                            <form action={ async (formData : FormData) => {
+                                            <form action={async (formData: FormData) => {
                                                 "use server"
                                                 await deleteProduct(formData);
                                             }}>
-                                                <input type="hidden" name="id" value={product.id}/>
+                                                <input type="hidden" name="id" value={product.id} />
                                                 <button className="text-red-600 hover:text-red-900">
                                                     Delete
                                                 </button>
@@ -102,6 +122,20 @@ export default async function InventoryPage({
                         </table>
 
                     </div>
+
+                    {totalPages > 1 && (
+                        <div className="bg-white rounded-lg border border-gray-200 p-6">
+                            <Pagination
+                                currentPage={page}
+                                totalPages={totalPages}
+                                baseUrl="/inventory"
+                                searchParams={{
+                                    q,
+                                    pageSize: String(pageSize)
+                                }}
+                            />
+                        </div>
+                    )}
 
                 </div>
 
