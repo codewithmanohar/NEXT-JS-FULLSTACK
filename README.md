@@ -1,151 +1,175 @@
-# 📦 EszyStock – Inventory Management System
+# 📦 EazyStocks – Full-Stack Inventory Management System
 
-**EszyStock** is a modern **inventory management web application** designed to help businesses efficiently manage stock, sales, and operations.
-Built using **Next.js 16**, **React 19**, **Prisma**, and **Tailwind CSS**, it delivers performance, scalability, and a clean user experience.
-
----
-
-## 🚀 Features
-
-* 📊 Interactive dashboard with analytics
-* 📦 Inventory & stock management
-* 📈 Sales tracking and reporting
-* 👥 User authentication & role-based access
-* ⚡ Fast UI powered by Next.js & React
-* 🗄️ Database management using Prisma ORM
-* 🎨 Modern UI with Tailwind CSS
-* 📱 Fully responsive design
+Build a **modern, full-stack Inventory Management System** using **Next.js**, **Stack Auth**, **Prisma**, and **PostgreSQL**.
+EazyStocks provides secure authentication, real-time inventory tracking, analytics dashboards, and complete CRUD functionality in a production-ready architecture.
 
 ---
 
-## 🛠 Tech Stack
+## 📋 Table of Contents
 
-### Frontend
+* Introduction
+* Tech Stack
+* Features
+* Quick Start
+* Environment Setup
+* Screenshots
+* Deployment
+* Useful Links
 
-* **Next.js 16**
-* **React 19**
-* **Tailwind CSS**
-* **Lucide Icons**
-* **Recharts**
-
-### Backend & Tools
-
-* **Prisma ORM**
-* **Node.js**
-* **TypeScript**
-* **Dotenv**
 
 ---
 
-## 📁 Project Structure
+## 🚀 Introduction
 
-```
-inventory-management/
-│
-├── app/                # App Router (Next.js)
-├── components/         # Reusable components
-├── lib/                # Utility functions
-├── prisma/             # Prisma schema & migrations
-├── public/             # Static assets
-├── styles/             # Global styles
-├── .env                # Environment variables
-├── package.json
-└── README.md
-```
+**EazyStocks** is a full-stack inventory management application designed to help businesses track products, monitor stock levels, and analyze inventory value in real time.
+
+This project demonstrates **modern web development best practices**, including:
+
+* Server Actions
+* Secure authentication
+* Database-driven architecture
+* Clean UI with Tailwind CSS
+
+It’s ideal for developers who want to learn **Next.js App Router**, **Stack Auth**, and **Prisma** while building a real-world application.
+
+🎥 **Full tutorial available on YouTube**
 
 ---
 
-## ⚙️ Installation & Setup
+## ⚙️ Tech Stack
 
-### 1️⃣ Clone the repository
+* **Next.js 15** – App Router & Server Components
+* **React 19** – Modern component-based UI
+* **Tailwind CSS** – Utility-first styling
+* **Stack Auth** – Modern authentication solution
+* **Prisma** – Type-safe ORM & migrations
+* **PostgreSQL** – Relational database
+* **Lucide Icons** – Clean & modern icons
+* **Recharts** – Data visualization & analytics
+* **TypeScript** – Type safety & better DX
+* **Vercel** – Deployment & hosting
+
+---
+
+## ⚡ Features
+
+* 🔐 **Authentication** – Secure login & registration with Stack Auth
+* 📊 **Dashboard Analytics** – Inventory insights & metrics
+* 📦 **Product Management** – Full CRUD operations
+* 🔍 **Search & Filtering** – Quickly find products
+* 📄 **Pagination** – Optimized performance for large inventories
+* ⚠️ **Low Stock Alerts** – Track critical stock levels
+* 💰 **Inventory Value Tracking** – Monitor total stock value
+* 📈 **Visual Charts** – Interactive analytics using Recharts
+* 📱 **Responsive UI** – Works on desktop & mobile
+* 🎨 **Modern Design** – Clean UI with Tailwind CSS
+* 🚀 **Server Actions** – Secure form handling
+* 🔄 **Real-time Updates** – Instant UI refresh after changes
+
+---
+
+## 👌 Quick Start
+
+### Prerequisites
+
+* Node.js **v18+**
+* Git
+* PostgreSQL (local or cloud like Neon)
+
+---
+
+### Clone the Repository
 
 ```bash
-git clone https://github.com/codewithmanohar/eszystock.git
-cd eszystock
-```
-
-### 2️⃣ Install dependencies
-
-```bash
+git clone https://github.com/codewithmanohar/eazystocks.git
+cd eazystocks
 npm install
 ```
 
-### 3️⃣ Setup environment variables
+---
 
-Create a `.env` file in the root directory:
+## 🔐 Environment Setup
+
+Create a `.env.local` file in the root directory:
 
 ```env
-DATABASE_URL="your_database_url_here"
+DATABASE_URL="postgresql://username:password@localhost:5432/eazystocks"
+NEXT_PUBLIC_STACK_PROJECT_ID="your_stack_project_id"
+NEXT_PUBLIC_STACK_PUBLISHABLE_CLIENT_KEY="your_publishable_key"
+STACK_SECRET_SERVER_KEY="your_secret_key"
 ```
 
 ---
 
-### 4️⃣ Setup Prisma
+### Database Setup
 
 ```bash
-npx prisma generate
 npx prisma migrate dev
+npx prisma generate
 ```
 
 ---
 
-### 5️⃣ Start the development server
+### Run the App
 
 ```bash
 npm run dev
 ```
 
-Open your browser and visit:
+Visit: **[http://localhost:3000](http://localhost:3000)**
+
+---
+
+## 🖼️ Screenshots
+
+*Add screenshots here to showcase:*
+
+* Dashboard
+* Inventory List
+* Add Product Form
+* Analytics Charts
+
+---
+
+## ☁️ Deployment
+
+### Deploy on Vercel
+
+1. Push your code to GitHub
+2. Go to **[https://vercel.com](https://vercel.com)**
+3. Import your repository
+4. Add environment variables
+5. Click **Deploy**
+
+Your app will be live at:
 
 ```
-http://localhost:3000
+https://eazystocks.vercel.app
 ```
 
 ---
 
-## 🧪 Available Scripts
+### Production Database Options
 
-| Command         | Description              |
-| --------------- | ------------------------ |
-| `npm run dev`   | Start development server |
-| `npm run build` | Build for production     |
-| `npm start`     | Start production server  |
-| `npm run lint`  | Run ESLint               |
+* **Neon** – Serverless PostgreSQL
+* **Supabase** – Open-source Firebase alternative
+* **PlanetScale** – MySQL-compatible DB
 
----
 
-## 📊 Charts & Analytics
 
-* Built using **Recharts**
-* Supports:
+## 🔗 Useful Links
 
-  * Area charts
-  * Bar charts
-  * KPI dashboards
-* Optimized for performance and clarity
+* Next.js Docs – [https://nextjs.org/docs](https://nextjs.org/docs)
+* Stack Auth – [https://stack-auth.com](https://stack-auth.com)
+* Prisma – [https://www.prisma.io/docs](https://www.prisma.io/docs)
+* Tailwind CSS – [https://tailwindcss.com/docs](https://tailwindcss.com/docs)
+* Lucide Icons – [https://lucide.dev](https://lucide.dev)
+* Recharts – [https://recharts.org](https://recharts.org)
+* Vercel – [https://vercel.com/docs](https://vercel.com/docs)
 
----
 
-## 🔐 Authentication & Security
 
-* Secure authentication system
-* Role-based access control
-* Environment-based configuration
+### ⭐ About
 
----
-
-## 📌 Future Enhancements
-
-* Role-based dashboards (Admin / Staff)
-* Stock alerts & notifications
-* Export reports (PDF / Excel)
-* Dark mode support
-* API integrations
-
----
-
-## 👨‍💻 Developer
-
-**Manohar Kumar**
-Full Stack Developer
-
+**EazyStocks** – A modern Next.js inventory management system
+🌐 Live Demo: [https://eazystocks.vercel.app](https://eazystocks.vercel.app)
