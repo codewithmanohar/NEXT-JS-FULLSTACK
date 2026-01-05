@@ -8,4 +8,6 @@ export async function getCurrentUser(){
     if(!user) {
         redirect("/sign-in"); 
     }
+
+    return user ; 
 }

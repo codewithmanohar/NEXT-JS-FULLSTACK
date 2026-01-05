@@ -1,8 +1,11 @@
 import Link from "next/link";
-
+import { getCurrentUser } from "@/lib/auth";
+import { redirect } from "next/navigation";
 
 export default async function Home() {
- 
+  const user = await getCurrentUser(); 
+  if(user) redirect("/dashboard"); 
+  
   return (
     <div className="min-h-screen bg-gradient-to-br from-purple-50 to-purple-100 flex items-center justify-center">
       <div className="container mx-auto px-4 py-16">
